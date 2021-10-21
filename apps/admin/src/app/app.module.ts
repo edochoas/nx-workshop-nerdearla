@@ -6,13 +6,14 @@ import { RouterModule } from '@angular/router';
 import { EspeciesComponent } from './especies/especies.component';
 import { CharactersComponent } from './characters/characters.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { UiKitModule  } from '@starwars/ui-kit'
 @NgModule({
   declarations: [AppComponent, EspeciesComponent, CharactersComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
-      RouterModule.forRoot([
+    UiKitModule,
+    RouterModule.forRoot([
       { path: 'especies', component: EspeciesComponent },
       { path: 'characters', component: CharactersComponent },
       { path: '', redirectTo: 'especies', pathMatch: 'full' }

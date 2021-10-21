@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@starwars/data": ["libs/data/src/index.ts"]
+      "@starwars/data": ["libs/data/src/index.ts"],
+      "@starwars/ui-kit": ["libs/ui-kit/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
