@@ -1,7 +1,148 @@
 {
   "version": 2,
-  "projects": {},
+  "projects": {
+    "wookieepedia": {
+      "projectType": "application",
+      "root": "apps/wookieepedia",
+      "sourceRoot": "apps/wookieepedia/src",
+      "prefix": "starwars",
+      "targets": {
+        "build": {
+          "executor": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/wookieepedia",
+            "index": "apps/wookieepedia/src/index.html",
+            "main": "apps/wookieepedia/src/main.ts",
+            "polyfills": "apps/wookieepedia/src/polyfills.ts",
+            "tsConfig": "apps/wookieepedia/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/wookieepedia/src/favicon.ico",
+              "apps/wookieepedia/src/assets"
+            ],
+            "styles": [
+              "apps/wookieepedia/src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/wookieepedia/src/environments/environment.ts",
+                  "with": "apps/wookieepedia/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "executor": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "wookieepedia:build:production"
+            },
+            "development": {
+              "browserTarget": "wookieepedia:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "wookieepedia:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/wookieepedia/src/**/*.ts",
+              "apps/wookieepedia/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/wookieepedia"],
+          "options": {
+            "jestConfig": "apps/wookieepedia/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "wookieepedia-e2e": {
+      "root": "apps/wookieepedia-e2e",
+      "sourceRoot": "apps/wookieepedia-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/wookieepedia-e2e/cypress.json",
+            "devServerTarget": "wookieepedia:serve:development",
+            "tsConfig": "apps/wookieepedia-e2e/tsconfig.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "wookieepedia:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/wookieepedia-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
   "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  }
+    "defaultCollection": "@nrwl/angular"
+  },
+  "generators": {
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "wookieepedia"
 }

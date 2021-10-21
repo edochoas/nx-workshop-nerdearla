@@ -1,0 +1,12 @@
+<div class="content-wrap mt-4">
+    <div class="especie" *ngFor="let especie of especies" >
+        <div class="card">
+            <img class="card-img-top" src="{{ especie.image }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ especie.name }}</h5>
+                <p class="card-text">{{ especie.description }}</p>
+                <span class="badge bg-dark planet">{{ especie.planet  }}</span>
+            </div>
+        </div>
+    </div>
+</div>
