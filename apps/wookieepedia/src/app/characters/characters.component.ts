@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { Character } from '../shared';
-
+import { Character } from '@starwars/data';
 @Component({
   selector: 'starwars-characters',
   templateUrl: './characters.component.html',

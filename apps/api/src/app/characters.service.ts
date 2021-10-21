@@ -1,10 +1,5 @@
 import { Injectable } from '@nestjs/common';
-
-export interface Character {
-  name: string;
-  image: string;
-  description: string;
-}
+import { Character } from '@starwars/data';
 
 const CHARACTERS = [
   {

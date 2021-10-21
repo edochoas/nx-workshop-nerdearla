@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { Especie } from '../shared';
-
-
+import { Especie } from '@starwars/data';
 @Component({
   selector: 'starwars-especies',
   templateUrl: './especies.component.html',

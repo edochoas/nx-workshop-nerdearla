@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Character, Especie } from './shared';
 import { HttpClient } from '@angular/common/http';
+import { Character, Especie } from '@starwars/data';
 
 @Injectable({
   providedIn: 'root'

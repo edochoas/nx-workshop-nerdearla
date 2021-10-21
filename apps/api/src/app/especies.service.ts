@@ -1,11 +1,5 @@
 import { Injectable } from '@nestjs/common';
-
-export interface Especie {
-  name: string;
-  description: string;
-  image: string;
-  planet: string;
-}
+import { Especie } from '@starwars/data';
 
 const ESPECIES = [
   {
